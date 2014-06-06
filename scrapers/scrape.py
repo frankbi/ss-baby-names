@@ -26,7 +26,7 @@ def request(w, year):
 
 def init(startYear, endYear):
 	header = ["year","rank","name","gender","numM","numF"]
-	outfile = open("babynames.csv", "wb")
+	outfile = open("../data/babynames.csv", "wb")
 	writer = csv.writer(outfile)
 	writer.writerow(header)
 	endYear += 1
