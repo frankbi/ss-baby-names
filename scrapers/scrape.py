@@ -7,12 +7,12 @@ import csv
 def getMNames(trs, year, w):
 	for tr in trs:
 		td = tr.findAll("td")
-		w.writerow([year, td[0].text, td[1].text, "m", td[2].text, ""])
+		w.writerow([year,td[0].text,td[1].text,"m",td[2].text,"-"])
 
 def getFNames(trs, year, w):
 	for tr in trs:
 		td = tr.findAll("td")
-		w.writerow([year, td[0].text, td[3].text, "f", "", td[4].text])
+		w.writerow([year,td[0].text,td[3].text,"f","-",td[4].text])
 
 def request(w, year):
 	URL = "http://www.ssa.gov/cgi-bin/popularnames.cgi"
@@ -27,7 +27,7 @@ def request(w, year):
 def init(startYear, endYear):
 	header = ["year","rank","name","gender","numM","numF"]
 	outfile = open("../data/babynames.csv", "wb")
-	writer = csv.writer(outfile)
+	writer = csv.writer(outfile, quoting = csv.QUOTE_ALL)
 	writer.writerow(header)
 	endYear += 1
 	for year in range(startYear, endYear):
